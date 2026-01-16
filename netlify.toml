@@ -1,0 +1,14 @@
+# Netlify Configuration for Next.js
+[build]
+  base = "frontend"
+  command = "npm run build"
+  publish = "out"
+
+[build.environment]
+  NEXT_PUBLIC_API_URL = "https://riskadvisor-api.onrender.com"
+
+# Redirects for SPA
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
