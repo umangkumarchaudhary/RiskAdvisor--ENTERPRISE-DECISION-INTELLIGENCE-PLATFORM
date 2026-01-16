@@ -1,0 +1,21 @@
+# RiskAdvisor v4.0 - Render Deployment
+# =====================================
+
+services:
+  # Backend API Service
+  - type: web
+    name: riskadvisor-api
+    runtime: docker
+    dockerfilePath: ./backend/Dockerfile
+    dockerContext: ./backend
+    region: singapore
+    plan: free
+    branch: main
+    envVars:
+      - key: DATABASE_URL
+        value: postgresql://airlines_db_doli_user:ykUqxoEwoHPHWt71RzNh3jkYLhKTVkzl@dpg-d5kvvoje5dus73fotn10-a/airlines_db_doli
+      - key: AERORISK_API_URL
+        value: https://aerorisk-1.onrender.com
+      - key: PYTHONUNBUFFERED
+        value: "1"
+    healthCheckPath: /health
